@@ -37,7 +37,7 @@ android {
         enabled = true
     }
 }
-task androidSourcesJar(type: Jar){
+task androidSourcesJar(type: Jar) {
     classifier 'sources'
     from android.sourceSets.main.java.srcDirs
 }
@@ -45,9 +45,9 @@ task androidSourcesJar(type: Jar){
 project.afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication){
+            release(MavenPublication) {
                 from components.release
-                artifact androidSourcesJar
+                artifact androidSourcesJar // optional sources
             }
         }
     }
