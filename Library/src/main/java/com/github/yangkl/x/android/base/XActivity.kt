@@ -68,4 +68,8 @@ abstract class XActivity<VDB : ViewDataBinding, VM : XViewModel> : AppCompatActi
     open fun onViewModelCreated(viewModel: VM) {
         // 子类实现
     }
+
+    fun getBinding(): VDB = binding
+
+    fun getViewModel(): VM? = viewModel
 }
