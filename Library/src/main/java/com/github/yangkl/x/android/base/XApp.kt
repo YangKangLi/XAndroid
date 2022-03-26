@@ -2,7 +2,7 @@ package com.github.yangkl.x.android.base
 
 import android.app.Application
 
-class XApp: Application() {
+open class XApp: Application() {
 
     companion object{
         lateinit var instance: XApp

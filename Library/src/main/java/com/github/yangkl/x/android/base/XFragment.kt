@@ -31,7 +31,7 @@ abstract class XFragment<VDB : ViewDataBinding, VM : XViewModel> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val factory = ViewModelProvider.AndroidViewModelFactory.getInstance(XApp.instance)
+        val factory = getViewModelFactory()
         viewModel = createViewModel(factory)
         viewModel?.let {
             lifecycle.addObserver(it)
