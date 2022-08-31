@@ -11,7 +11,7 @@ class ViewHolder(private val convertView: View) {
     /**
      * 根据ID获得View
      */
-    fun <T : View> getView(viewId: Int): T? {
+    fun <T : View> getView(viewId: Int): T {
         var view: View? = views.get(viewId)
         if (view == null) {
             view = convertView.findViewById<T>(viewId)

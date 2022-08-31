@@ -1,10 +1,14 @@
 package com.github.yangkl.x.android.base
 
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import com.github.yangkl.x.android.base.utils.XActivityUtils
 
 abstract class XActivity<VDB : ViewDataBinding, VM : XViewModel> : AppCompatActivity() {
 
@@ -72,4 +76,24 @@ abstract class XActivity<VDB : ViewDataBinding, VM : XViewModel> : AppCompatActi
     fun getBinding(): VDB = binding
 
     fun getViewModel(): VM? = viewModel
+
+    /**
+     * 重写dispatchTouchEvent，点击软键盘外面的区域关闭软键盘
+     *
+     * @param event
+     */
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            // 获得当前得到焦点的View，
+            val view: View? = currentFocus
+            if (XActivityUtils.isTouchedInEditTextArea(view, event)) {
+                //根据判断关闭软键盘
+                val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(view?.windowToken, 0)
+            }
+        }
+        return super.dispatchTouchEvent(event)
+    }
+
+
 }
