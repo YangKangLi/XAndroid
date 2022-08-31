@@ -1,4 +1,4 @@
-package com.github.yangkl.x.android.base.utils
+package com.github.yangkl.x.android.utils
 
 import android.view.MotionEvent
 import android.view.View

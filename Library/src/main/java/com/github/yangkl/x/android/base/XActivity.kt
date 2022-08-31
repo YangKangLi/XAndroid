@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import com.github.yangkl.x.android.base.utils.XActivityUtils
+import com.github.yangkl.x.android.utils.XActivityUtils
 
 abstract class XActivity<VDB : ViewDataBinding, VM : XViewModel> : AppCompatActivity() {
 
